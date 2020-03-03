@@ -7,7 +7,24 @@ import (
 	"strings"
 )
 
+func addSpace(a string) (b string){
+	for _, zz := range a {
+		z := string(zz)
+		r := strings.ContainsAny(z, "+*-/^=")
+		fmt.Println(r)
+		if r {
+			b = b + " "
+		}
+		b = b + z
+		if r {
+                        b = b + " "
+                }
+	}
+	return
+}
+
 func verif(a string)  (b []op, ok bool) {
+	a = strings.Join(strings.Fields(addSpace(a))," ")
 	g := strings.Split(a, " ")
 	fmt.Println(g)
 	return
