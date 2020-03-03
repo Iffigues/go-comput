@@ -3,11 +3,13 @@ package main
 import (
 	"os"
 	"log"
+	"fmt"
 	"strings"
 )
 
 func verif(a string)  (b []op, ok bool) {
-	print(a)
+	g := strings.Split(a, " ")
+	fmt.Println(g)
 	return
 }
 
