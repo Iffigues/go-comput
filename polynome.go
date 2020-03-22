@@ -105,7 +105,9 @@ func (r *obj) makeFinal() {
 		for _, value := range val {
 			t = t + value
 		}
-		r.finalPoly = append(r.finalPoly, poly{t, key})
+		if t != 0 {
+			r.finalPoly = append(r.finalPoly, poly{t, key})
+		}
 	}
 	sort.Sort(ByAge(r.finalPoly))
 	fmt.Println(r.finalPoly)
