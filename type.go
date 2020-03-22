@@ -5,8 +5,12 @@ type poly struct {
 	degree int
 }
 
+type ByAge []poly
+
 type obj struct {
-	poly1   []poly
-	poly2   []poly
-	intPoly []poly
+	poly1      []poly
+	poly2      []poly
+	intPoly    []poly
+	middlePoly map[int][]float64
+	finalPoly  []poly
 }

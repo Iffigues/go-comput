@@ -4,6 +4,7 @@ import (
 	"errors"
 	"fmt"
 	"log"
+	"sort"
 	"strconv"
 	"strings"
 )
@@ -69,7 +70,6 @@ func (r *obj) makePoly(a string) (b []poly) {
 
 func (r *obj) verify(a string) (b []string) {
 	a = strings.Join(strings.Fields(r.addSpace(a)), " ")
-	fmt.Println(a)
 	return strings.Split(a, "=")
 }
 
@@ -81,7 +81,34 @@ func (r *obj) makeInt() {
 		val.nb = val.nb * -1
 		r.intPoly = append(r.intPoly, val)
 	}
-	fmt.Println(r.intPoly)
+}
+
+func (r *obj) makeMiddle() {
+	for _, val := range r.intPoly {
+		if _, ok := r.middlePoly[val.degree]; !ok {
+			r.middlePoly[val.degree] = nil
+		}
+	}
+	for val, _ := range r.middlePoly {
+		for _, value := range r.intPoly {
+			if value.degree == val {
+				r.middlePoly[val] = append(r.middlePoly[val], value.nb)
+			}
+		}
+	}
+}
+
+func (r *obj) makeFinal() {
+	for key, val := range r.middlePoly {
+		var t float64
+		t = 0
+		for _, value := range val {
+			t = t + value
+		}
+		r.finalPoly = append(r.finalPoly, poly{t, key})
+	}
+	sort.Sort(ByAge(r.finalPoly))
+	fmt.Println(r.finalPoly)
 }
 
 func newObj(a []string) (r *obj, err error) {
@@ -91,6 +118,7 @@ func newObj(a []string) (r *obj, err error) {
 	}
 
 	r = new(obj)
+	r.middlePoly = make(map[int][]float64)
 	ops := r.verify(strings.Join(a, " "))
 	if len(ops) != 2 {
 		return nil, errors.New("error in equation")
@@ -98,5 +126,7 @@ func newObj(a []string) (r *obj, err error) {
 	r.poly1 = r.makePoly(strings.Trim(ops[0], " "))
 	r.poly2 = r.makePoly(strings.Trim(ops[1], " "))
 	r.makeInt()
+	r.makeMiddle()
+	r.makeFinal()
 	return
 }
