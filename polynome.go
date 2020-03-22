@@ -40,8 +40,11 @@ func (r *obj) getString(a string) (j string) {
 
 func (r *obj) buildPoly(a string) (p poly) {
 	f := strings.Split(a, "X")
-	if len(f) != 2 {
+	if len(f) > 2 {
 		log.Fatal("error in process")
+	}
+	if len(f) == 1 {
+		f = append(f, "0")
 	}
 	if f[0] == "" {
 		f[0] = "1"
