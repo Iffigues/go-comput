@@ -11,6 +11,6 @@ func args() (b string) {
 	fmt.Print("Enter text: ")
 	text, _ := reader.ReadString('\n')
 	fmt.Println(text)
-	b = text[:len(text) - 1]
+	b = text[:len(text)-1]
 	return
 }
