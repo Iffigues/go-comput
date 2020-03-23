@@ -39,6 +39,7 @@ func (r *obj) getString(a string) (j string) {
 }
 
 func (r *obj) buildPoly(a string) (p poly) {
+
 	f := strings.Split(a, "X")
 	if len(f) > 2 {
 		log.Fatal("error in process")
@@ -64,7 +65,10 @@ func (r *obj) buildPoly(a string) (p poly) {
 
 func (r *obj) makePoly(a string) (b []poly) {
 	j := strings.Split(r.getString(a), " ")
-	for _, val := range j {
+	for key, val := range j {
+		if key > 0 && !strings.ContainsAny(val, "+-") {
+			log.Fatal("error")
+		}
 		b = append(b, r.buildPoly(val))
 	}
 	fmt.Println(b)
