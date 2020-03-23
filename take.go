@@ -13,11 +13,11 @@ func (r *obj) getDegree() (a int) {
 func (r *obj) calc() {
 	f := r.getDegree()
 	if f == 0 {
-
+		r.zero()
 	} else if f == 1 {
-
+		r.one()
 	} else if f == 2 {
-
+		r.two()
 	} else {
 
 	}
