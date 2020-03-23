@@ -23,3 +23,7 @@ func (r *obj) two() {
 	r.getPoly(1)
 	r.getPoly(2)
 }
+
+func (r *obj) other() {
+	r.print()
+}

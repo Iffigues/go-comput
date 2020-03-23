@@ -2,7 +2,6 @@ package main
 
 import (
 	"errors"
-	"fmt"
 	"log"
 	"sort"
 	"strconv"
@@ -72,7 +71,6 @@ func (r *obj) makePoly(a string) (b []poly) {
 		}
 		b = append(b, r.buildPoly(val))
 	}
-	fmt.Println(b)
 	return
 }
 
@@ -118,7 +116,6 @@ func (r *obj) makeFinal() {
 		}
 	}
 	sort.Sort(ByAge(r.finalPoly))
-	fmt.Println(r.finalPoly)
 }
 
 func newObj(a []string) (r *obj, err error) {
@@ -138,5 +135,6 @@ func newObj(a []string) (r *obj, err error) {
 	r.makeInt()
 	r.makeMiddle()
 	r.makeFinal()
+	r.calc()
 	return
 }
