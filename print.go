@@ -1,25 +1,27 @@
 package main
 
+import "fmt"
+
 func (r *obj) print() {
 	for key, val := range r.finalPoly {
 		h := val.nb
 		if key > 0 {
 			if val.nb > 0 {
-				print(" + ")
+				print("+ ")
 			} else {
-				print(" - ")
+				print("- ")
+				h = h * -1
 			}
-			h = h * -1
 		}
-		print(h)
+		fmt.Print(h)
 		if val.degree > 0 {
-			print("X")
+			print(" * X")
 		}
-		if val.degree > 0 {
+		if val.degree > 1 {
 			print(" ^ ")
 			print(val.degree)
 		}
 		print(" ")
 	}
-	print("\n")
+	print("= 0\n")
 }

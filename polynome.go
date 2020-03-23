@@ -33,15 +33,16 @@ func (r *obj) getString(a string) (j string) {
 	gg := strings.ReplaceAll(g, " *", "")
 	h := strings.ReplaceAll(gg, " ^ ", "")
 	ggg := strings.ReplaceAll(h, "X ", "X")
-	i := strings.ReplaceAll(ggg, "+ ", "+")
+	gggg := strings.ReplaceAll(ggg, "X+", "X +")
+	ggggg := strings.ReplaceAll(gggg, "X-", "X -")
+	i := strings.ReplaceAll(ggggg, "+ ", "+")
 	j = strings.ReplaceAll(i, "- ", "-")
 	return j
 }
 
 func (r *obj) buildPoly(a string) (p poly) {
-
 	f := strings.Split(a, "X")
-	if len(f) > 2 {
+	if len(f) > 3 {
 		log.Fatal("error in process")
 	}
 	if len(f) == 1 {
@@ -52,6 +53,18 @@ func (r *obj) buildPoly(a string) (p poly) {
 	}
 	if f[1] == "" {
 		f[1] = "1"
+	}
+	if f[0] == "+" {
+		f[0] = "1"
+	}
+	if f[0] == "-" {
+		f[0] = "-1"
+	}
+	if f[1] == "+" {
+		f[1] = "1"
+	}
+	if f[1] == "-" {
+		f[1] = "-1"
 	}
 	var err error
 	if p.nb, err = strconv.ParseFloat(f[0], 64); err != nil {
