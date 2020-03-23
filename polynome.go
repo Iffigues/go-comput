@@ -33,7 +33,8 @@ func (r *obj) getString(a string) (j string) {
 	g := strings.ReplaceAll(f, " X", "X")
 	gg := strings.ReplaceAll(g, " *", "")
 	h := strings.ReplaceAll(gg, " ^ ", "")
-	i := strings.ReplaceAll(h, "+ ", "+")
+	ggg := strings.ReplaceAll(h, "X ", "X")
+	i := strings.ReplaceAll(ggg, "+ ", "+")
 	j = strings.ReplaceAll(i, "- ", "-")
 	return j
 }
