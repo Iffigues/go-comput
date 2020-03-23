@@ -2,6 +2,7 @@ package main
 
 import (
 	"errors"
+	"fmt"
 	"log"
 	"sort"
 	"strconv"
@@ -31,7 +32,7 @@ func (r *obj) getString(a string) (j string) {
 	f := strings.ReplaceAll(e, "- +", "-")
 	g := strings.ReplaceAll(f, " X", "X")
 	gg := strings.ReplaceAll(g, " *", "")
-	h := strings.ReplaceAll(gg, " ^ ", "")
+	h := strings.ReplaceAll(gg, " ^ ", "^")
 	ggg := strings.ReplaceAll(h, "X ", "X")
 	gggg := strings.ReplaceAll(ggg, "X+", "X +")
 	ggggg := strings.ReplaceAll(gggg, "X-", "X -")
@@ -42,6 +43,7 @@ func (r *obj) getString(a string) (j string) {
 
 func (r *obj) buildPoly(a string) (p poly) {
 	f := strings.Split(a, "X")
+	fmt.Println(f)
 	if len(f) > 3 {
 		log.Fatal("error in process")
 	}
@@ -66,6 +68,7 @@ func (r *obj) buildPoly(a string) (p poly) {
 	if f[1] == "-" {
 		f[1] = "-1"
 	}
+	f[1] = strings.Trim(f[1], "^")
 	var err error
 	if p.nb, err = strconv.ParseFloat(f[0], 64); err != nil {
 		log.Fatal("error in conversion")
@@ -78,6 +81,7 @@ func (r *obj) buildPoly(a string) (p poly) {
 
 func (r *obj) makePoly(a string) (b []poly) {
 	j := strings.Split(r.getString(a), " ")
+	fmt.Println(a, j)
 	for key, val := range j {
 		if key > 0 && !strings.ContainsAny(val, "+-") {
 			log.Fatal("error")
