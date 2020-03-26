@@ -19,7 +19,9 @@ func (r *obj) zero() {
 func (r *obj) one() {
 	r.print()
 	a, b := ireductible(r.getPoly(0)*-1, r.getPoly(1))
-	fmt.Println("Fraction irreductibl: ", a, " / ", b)
+	if a != r.getPoly(0)*-1 && b != r.getPoly(1) {
+		fmt.Println("Fraction irreductibl: ", a, " / ", b)
+	}
 	fmt.Println(a / b)
 }
 
