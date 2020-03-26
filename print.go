@@ -14,10 +14,10 @@ func (r *obj) print() {
 			}
 		}
 		fmt.Print(h)
-		if val.degree > 0 {
+		if val.degree != 0 {
 			print(" * X")
 		}
-		if val.degree > 1 {
+		if val.degree != 1 && val.degree != 0 {
 			print(" ^ ")
 			print(val.degree)
 		}
