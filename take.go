@@ -12,8 +12,20 @@ func (r *obj) getDegree() (a int) {
 	return
 }
 
+func (r *obj) is_possible() (ok bool) {
+	for _, val := range r.finalPoly {
+		if val.degree < 0 {
+			return false
+		}
+	}
+	return true
+}
+
 func (r *obj) calc() {
 	f := r.getDegree()
+	if !r.is_possible() {
+
+	}
 	if len(r.finalPoly) == 0 {
 		fmt.Println("all solution")
 	} else if f == 0 {
