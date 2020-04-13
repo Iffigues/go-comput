@@ -27,9 +27,12 @@ func (r *obj) one() {
 
 func (r *obj) twos(a, b float64) {
 	b = b * -1
-	fmt.Println(a, b)
+	aa, bb := ireductible(a, b)
+	if aa != a || bb != b {
+		a = aa
+		b = bb
+	}
 	dis, err := Sqrt(b / a)
-	fmt.Println(dis)
 	if err != nil && err.Error() == "it's negatice" {
 		fmt.Println(a, b, "ezez")
 	} else {
