@@ -29,10 +29,10 @@ func ireductible(a, b float64) (c, d float64) {
 		b = b * -1.0
 	}
 	if !is_whole(a) || !is_whole(b) {
-		return a, b
+		return a * sa, b * sb
 	}
 	if is_whole(a / b) {
-		return a / b, b / b
+		return a * sa / b * sb, b * sb / b * sb
 	}
 	ok := true
 	for {
