@@ -24,7 +24,6 @@ func (r *obj) is_possible() (ok bool) {
 func (r *obj) calc() {
 	f := r.getDegree()
 	if !r.is_possible() {
-
 	}
 	if len(r.finalPoly) == 0 {
 		fmt.Println("all solution")

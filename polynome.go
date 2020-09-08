@@ -135,17 +135,20 @@ func (r *obj) makeFinal() {
 func newObj(a []string) (r *obj, err error) {
 
 	if a == nil {
+		print("oui")
 		return nil, errors.New("empty string")
 	}
 
 	r = new(obj)
 	r.middlePoly = make(map[int][]float64)
 	ops := r.verify(strings.Join(a, " "))
-	if len(ops) != 2 {
+	if len(ops) < 1 || len(ops) > 2 {
 		return nil, errors.New("error in equation")
 	}
 	r.poly1 = r.makePoly(strings.Trim(ops[0], " "))
-	r.poly2 = r.makePoly(strings.Trim(ops[1], " "))
+	if len(ops) > 1 {
+		r.poly2 = r.makePoly(strings.Trim(ops[1], " "))
+	}
 	r.makeInt()
 	r.makeMiddle()
 	r.makeFinal()
