@@ -2,7 +2,6 @@ package main
 
 import (
 	"errors"
-	"fmt"
 	"log"
 	"sort"
 	"strconv"
@@ -43,7 +42,6 @@ func (r *obj) getString(a string) (j string) {
 
 func (r *obj) buildPoly(a string) (p poly) {
 	f := strings.Split(a, "X")
-	fmt.Println(f)
 	if len(f) > 3 {
 		log.Fatal("error in process")
 	}
@@ -81,7 +79,6 @@ func (r *obj) buildPoly(a string) (p poly) {
 
 func (r *obj) makePoly(a string) (b []poly) {
 	j := strings.Split(r.getString(a), " ")
-	fmt.Println(a, j)
 	for key, val := range j {
 		if key > 0 && !strings.ContainsAny(val, "+-") {
 			log.Fatal("error")

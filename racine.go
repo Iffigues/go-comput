@@ -21,7 +21,6 @@ func Sqrt(x float64) (z float64, err error) {
 	step := func() float64 {
 		return z - (z*z-x)/(2*z)
 	}
-
 	for zz := step(); abs(zz-z) > delta; {
 		z = zz
 		zz = step()

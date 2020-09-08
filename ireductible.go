@@ -20,6 +20,9 @@ func find(a, b float64) (c, d float64, ok bool) {
 
 func ireductible(a, b float64) (c, d float64) {
 	sa, sb := 1.0, 1.0
+	if a == 0 {
+		return a, b
+	}
 	if a < 0 {
 		sa = -1.0
 		a = a * -1.0
