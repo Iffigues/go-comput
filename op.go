@@ -46,7 +46,6 @@ func (r *obj) two() {
 	c := r.getPoly(0)
 	b := r.getPoly(1)
 	a := r.getPoly(2)
-	fmt.Println(c,b,a)
 	if b == 0 {
 		r.twos(a, c)
 		return
@@ -56,7 +55,6 @@ func (r *obj) two() {
 		dic, _  := Sqrt(dis)
 		x1 := -b + dic
 		x2 := -b - dic
-		fmt.Println(x1,x2)
 		y := 2 * a
 		g1, g2 := ireductible(x1, y)
 		g3, g4 := ireductible(x2, y)
@@ -64,14 +62,12 @@ func (r *obj) two() {
 			fmt.Println("Fraction irreductible: ", g1, "/", g2)
 			x1 = g1 / g2
 		} else {
-			fmt.Println("hallo")
 			x1 = x1 / y
 		}
 		if g3 != x2 || g4 != y {
 			fmt.Println(x2, "Fraction irreductible: ", g3, "/", g4)
 			x2 = g3 / g4
 		} else {
-			fmt.Println("hello")
 			x2 = x2 / y
 		}
 		fmt.Println("the first solution was ", x1)
