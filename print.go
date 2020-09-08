@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 func (r *obj) print() {
-	print("Reduced form: ");
+	print("Reduced form: ")
 	for key, val := range r.finalPoly {
 		h := val.nb
 		if key > 0 {
@@ -25,5 +25,5 @@ func (r *obj) print() {
 		print(" ")
 	}
 	print("= 0\n")
-	fmt.Println("Polynomial degree: ",r.getDegree())
+	fmt.Println("Polynomial degree: ", r.getDegree())
 }

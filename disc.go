@@ -15,6 +15,6 @@ func disc(b, a, c float64) (dix float64) {
 }
 
 func null(b, a float64) (dix float64) {
-	i := b/(a)
+	i := b / (a)
 	return -i
 }
